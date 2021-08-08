@@ -18,11 +18,12 @@ app.use(express.static('public'));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
-  useUnifiedTopology:true
+  useUnifiedTopology:true,
+  useFindAndModify: false,
 });
 
-app.use(require("./routes/api.js"));
-app.use(require("./routes/htmlroutes.js"));
+const routes = require("./routes");
+app.use(routes);
 
 
 app.listen(PORT, function(){

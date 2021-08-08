@@ -2,8 +2,11 @@ const API = {
   async getLastWorkout() {
     let res;
     try {
+      console.log("inGet")
       res = await fetch("/api/workouts");
+      console.log('after fetch')
     } catch (err) {
+      console.log("In catch")
       console.log(err)
     }
     const json = await res.json();
@@ -11,6 +14,7 @@ const API = {
     return json[json.length - 1];
   },
   async addExercise(data) {
+    console.log("in add Exercise")
     const id = location.search.split("=")[1];
 
     const res = await fetch("/api/workouts/" + id, {
@@ -36,6 +40,7 @@ const API = {
   },
 
   async getWorkoutsInRange() {
+    console.log("In get workouts INRange")
     const res = await fetch(`/api/workouts/range`);
     const json = await res.json();
 
