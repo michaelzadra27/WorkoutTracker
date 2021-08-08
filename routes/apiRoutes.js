@@ -42,11 +42,13 @@ router.post("/api/workouts", (req, res) => {
 //Udpate Workout Data
 router.put("/api/workouts/:id", (req, res) => {
     const id = req.params.id;
-    console.log("HITTING id")
+    console.log("IN THE IDD")
     let workoutUpdates = [];
     db.Workout.find({ _id:id })
         .then (workoutData => {
+            console.log(workoutData)
             workoutUpdates = workoutData[0].exercises;
+            console.log(workoutUpdates)
             res.json(workoutUpdates);
         
         let exercises = [...workoutUpdates, req.body];
