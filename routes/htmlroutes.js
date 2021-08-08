@@ -1,4 +1,4 @@
-var path = require("path");
+const path = require("path");
 
 const router = require("express").Router();
 
@@ -15,17 +15,9 @@ router.get("/stats", (req, res) => {
 
 router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname,"../public/index.html"))
-    console.log("In Index")
+    
 })
 
 
-
-
-
-
-
-
-
-
-
 module.exports = router;
+

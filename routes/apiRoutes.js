@@ -5,7 +5,7 @@ const db = require("../models")
 
 //Find workout data
 
-router.get("/workouts", (req, res) => {
+router.get("/api/workouts", (req, res) => {
     console.log("geting workout data")
     db.Workout.find()
         .then(workoutData => {
@@ -18,7 +18,7 @@ router.get("/workouts", (req, res) => {
         })
   });
 
-router.get("/workouts/range", (req, res) => {
+router.get("/api/workouts/range", (req, res) => {
     db.Workout.find()
         .then ((workoutData) =>{
             res.json(workoutData);
@@ -28,7 +28,7 @@ router.get("/workouts/range", (req, res) => {
 });
 
 //Post new workout data
-router.post("/workouts", (req, res) => {
+router.post("/api/workouts", (req, res) => {
     db.Workout.create(req.body)
         .then((workoutData) => {
             res.json(workoutData);
@@ -40,7 +40,7 @@ router.post("/workouts", (req, res) => {
 
 
 //Udpate Workout Data
-router.put("/workouts/:id", (req, res) => {
+router.put("/api/workouts/:id", (req, res) => {
     const id = req.params.id;
     console.log("HITTING id")
     let workoutUpdates = [];
@@ -65,7 +65,6 @@ router.put("/workouts/:id", (req, res) => {
 
 
 module.exports = router;
-
 
 
 

@@ -1,4 +1,4 @@
-
+const path = require('path');
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
@@ -12,7 +12,9 @@ app.use(morgan("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+
+app.use(express.static("public"));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
@@ -22,10 +24,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false,
 });
 
-const routes = require("./routes");
-app.use(routes);
+
+
+app.use(require('./routes/apiRoutes.js'));
+app.use(require('./routes/htmlroutes.js'));
 
 
 app.listen(PORT, function(){
     console.log(`App listening on Port ${PORT}!`);
 });
+
