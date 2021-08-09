@@ -13,10 +13,12 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+//Allow static files to be rendered
 app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, 'public')));
 
 
+//Connect to MongoDB atlas if available, if not connect locaally to db
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
@@ -25,7 +27,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 });
 
 
-
+//Importing Routes
 app.use(require('./routes/apiRoutes.js'));
 app.use(require('./routes/htmlroutes.js'));
 
