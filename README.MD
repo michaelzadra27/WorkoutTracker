@@ -37,4 +37,4 @@ If you have any questions please visit my GitHub profile https://github.com/mich
 
 ### Link to Deployment
 
-[Click Here for you fitness goals!](https://fathomless-escarpment-16869.herokuapp.com/)
+[Click Here for your fitness goals!](https://fathomless-escarpment-16869.herokuapp.com/)
